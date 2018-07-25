@@ -6,4 +6,3 @@ ks_tgz_url: '{{ks_mirror}}/v{{ks_ver}}/{{ks_tgz}}'
 
 ks_install_dir: '{{ks_parent_install_dir}}/{{ks_name}}'
 ks_link_dir: '{{ks_parent_install_dir}}/ks'
-
