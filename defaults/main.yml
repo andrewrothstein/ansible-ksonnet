@@ -1,6 +1,6 @@
 ---
 # defaults file for ksonnet
-ks_ver: '0.13.0'
+ks_ver: '0.13.1'
 ks_platform: linux_amd64
 ks_checksums:
   # curl -SsL https://github.com/ksonnet/ksonnet/releases/download/v0.10.2/ks_0.10.2_checksums.txt
@@ -23,6 +23,11 @@ ks_checksums:
     darwin_amd64: sha256:3c62bc25261fa033317fc0d04fa3037daf34c1119cd80b6b95b056057fc73bec
     linux_amd64: sha256:1073ad40dfb445ff1fa7c7245c8d682878853d2b3c83e52ce6f517afa452dece
     windows_amd64: sha256:3bf9af50f15951aa96677d6aa211e779d5d67807b0773ec1c2b2ad61eb545b68
+  # curl -SsL https://github.com/ksonnet/ksonnet/releases/download/v0.13.1/ks_0.13.1_checksums.txt
+  '0.13.0':
+    linux_amd64: sha256:fe76e414e5cba3f093e34e1b433f79cd53915e3153b68cff5ba3273cafd8a2a0
+    darwin_amd64: sha256:5e4bf4ef3eec3c47082c95ded07fd32b70c214134626bca8d7a6a424ea7ffeb8
+    windows_amd64: sha256:ca76063a2819ade0c4e2749c59fb92cfd7210d1c1196e7b4c20b0f4b4bd2bebc
 
 ks_mirror: https://github.com/ksonnet/ksonnet/releases/download
 ks_parent_install_dir: /usr/local
