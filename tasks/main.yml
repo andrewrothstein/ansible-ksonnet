@@ -1,19 +1,19 @@
 ---
 - name: resolve platform specific vars
-  include_vars: '{{item}}'
+  include_vars: '{{ item }}'
   with_first_found:
     - files:
-        - '{{ansible_distribution}}-{{ansible_distribution_release}}.yml'
-        - '{{ansible_distribution}}.yml'
-        - '{{ansible_os_family}}.yml'
+        - '{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml'
+        - '{{ ansible_distribution }}.yml'
+        - '{{ ansible_os_family }}.yml'
       skip: true
       paths:
-        - '{{role_path}}/vars'
+        - '{{ role_path }}/vars'
 - name: check for install
   become: yes
   become_user: root
   stat:
-    path: '{{ks_install_dir}}'
+    path: '{{ ks_install_dir }}'
   changed_when: False
   register: ks_binary
 - when: not ks_binary.stat.exists
@@ -22,30 +22,30 @@
       become: yes
       become_user: root
       get_url:
-        url: '{{ks_tgz_url}}'
-        dest: /tmp/{{ks_tgz}}
+        url: '{{ ks_tgz_url }}'
+        dest: /tmp/{{ ks_tgz }}
         mode: 0644
     - name: unarchive...
       become: yes
       become_user: root
       unarchive:
         remote_src: yes
-        src: /tmp/{{ks_tgz}}
-        dest: '{{ks_parent_install_dir}}'
-        creates: '{{ks_install_dir}}'
+        src: /tmp/{{ ks_tgz }}
+        dest: '{{ ks_parent_install_dir }}'
+        creates: '{{ ks_install_dir }}'
   always:
     - name: cleanup
       become: yes
       become_user: root
       file:
-        path: /tmp/{{ks_tgz}}
+        path: /tmp/{{ ks_tgz }}
         state: absent
 - name: link up...
   become: yes
   become_user: root
   file:
-    src: '{{ks_install_dir}}'
-    dest: '{{ks_link_dir}}'
+    src: '{{ ks_install_dir }}'
+    dest: '{{ ks_link_dir }}'
     state: link
 - name: include in default shell path
   become: yes
@@ -54,6 +54,6 @@
     - f: ks.sh
       d: /etc/profile.d
   template:
-    src: '{{item.f}}.j2'
-    dest: '{{item.d}}/{{item.f}}'
+    src: '{{ item.f }}.j2'
+    dest: '{{ item.d }}/{{ item.f }}'
     mode: 0644

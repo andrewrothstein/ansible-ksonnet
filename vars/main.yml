@@ -1,5 +1,6 @@
 ---
 # vars file for ksonnet
+ks_platform: '{{ ks_os }}_{{ ks_arch }}'
 ks_name: ks_{{ks_ver}}_{{ks_platform}}
 ks_tgz: '{{ks_name}}.tar.gz'
 ks_tgz_url: '{{ks_mirror}}/v{{ks_ver}}/{{ks_tgz}}'
